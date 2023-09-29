@@ -1,6 +1,6 @@
-const { User } = require('./models'); // Import your User model
-const { AuthenticationError } = require('apollo-server-errors');
-const { generateToken } = require('./utils/auth'); // Import a function to generate tokens
+const { User } = require('../models'); // Import your User model
+const { AuthenticationError } = require('@apollo/server');
+const { generateToken } = require('../utils/auth'); // Import a function to generate tokens
 
 const resolvers = {
   Query: {
