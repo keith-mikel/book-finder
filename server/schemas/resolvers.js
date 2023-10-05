@@ -1,6 +1,6 @@
 const { User } = require('../models'); // Import your User model
 const { AuthenticationError } = require('@apollo/server');
-const { generateToken } = require('../utils/auth'); // Import a function to generate tokens
+const { signToken } = require('../utils/auth'); // Import a function to generate tokens
 
 const resolvers = {
   Query: {
@@ -25,7 +25,7 @@ const resolvers = {
       }
 
       // Generate a token for the user
-      const token = generateToken(user);
+      const token = signToken(user);
 
       // Return the user and token in the Auth type
       return { user, token };
@@ -35,7 +35,7 @@ const resolvers = {
       const user = await User.create({ username, email, password });
 
       // Generate a token for the new user
-      const token = generateToken(user);
+      const token = signToken(user);
 
       // Return the user and token in the Auth type
       return { user, token };
